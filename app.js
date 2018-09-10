@@ -40,6 +40,18 @@ app.post('/adduser', (req, res) => {
   user.save();
 });
 
+app.get('/users', (req, res) => {
+  User.find({}, function(err, users) {
+    var userMap = {};
+
+    users.forEach(function(user) {
+      userMap[user._id] = user;
+    });
+
+    res.send(userMap);
+  })
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
