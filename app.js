@@ -3,25 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+// var mongoose = require('mongoose');
+// mongoose.Promise = global.Promise;
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+// var indexRouter = require('./routes/index');
+// var usersRouter = require('./routes/users');
 
 var app = express();
 
-mongoose.connect('mongodb://localhost:27017/express-tutorial');
+// mongoose.connect('mongodb://localhost:27017/express-tutorial');
 
-var userSchema = new mongoose.Schema({
-  username: String,
-  firstname: String,
-  lastname: String,
-  email: String,
-  regdate: { type: Date, default: Date.now }
-});
+// var userSchema = new mongoose.Schema({
+//   username: String,
+//   firstname: String,
+//   lastname: String,
+//   email: String,
+//   regdate: { type: Date, default: Date.now }
+// });
 
-var User = mongoose.model("User", userSchema);
+// var User = mongoose.model("User", userSchema);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -33,27 +33,27 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.post('/adduser', (req, res) => {
-  res.send('user added');
-  console.log(req.body);
-  var user = new User(req.body);
-  user.save();
-});
+// app.post('/adduser', (req, res) => {
+//   res.send('user added');
+//   console.log(req.body);
+//   var user = new User(req.body);
+//   user.save();
+// });
 
-app.get('/users', (req, res) => {
-  User.find({}, function(err, users) {
-    var userMap = {};
+// app.get('/users', (req, res) => {
+//   User.find({}, function(err, users) {
+//     var userMap = {};
 
-    users.forEach(function(user) {
-      userMap[user._id] = user;
-    });
+//     users.forEach(function(user) {
+//       userMap[user._id] = user;
+//     });
 
-    res.send(userMap);
-  })
-})
+//     res.send(userMap);
+//   })
+// })
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/', indexRouter);
+// app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -68,7 +68,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.send(err);
+  // res.render('error');
 });
 
 module.exports = app;
