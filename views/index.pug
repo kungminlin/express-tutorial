@@ -1,22 +1,55 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  <form method="post" action="/adduser">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" />
-    <br />
-    <br />
-    <label for="firstname">First Name</label>
-    <input type="text" id="firstname" name="firstname" />
-    <br />
-    <br />
-    <label for="lastname">Last Name</label>
-    <input type="lastname" id="lastname" name="lastname" />
-    <br />
-    <br />
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" />
-    <input type="submit" value="Submit" />
-  </form>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Page</title>
+  link(rel='icon', href='/favicon.ico')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="/js/site.js"></script>
+</head>
+<body>
+  <div id="p1" class="page">
+    <div id="group-title">
+      <img id="title-icon" src="/images/sdp-ico.png">
+      <h1 id="title">A One-Page Experience</h1>
+      <h2 id="title-caption"><i>Literally every hipster company is doing this right now</i></h2>
+    </div>
+    <img id="scroll-icon" onclick="scrollFromMainPage()" src="/images/dropdown-ico.png">
+  </div>
+  <div id="p2" class="page">
+    <div class="header-bar">
+      <h1>Sign Up for our HipsterService - You Totally Need It</h1>
+    </div>
+    <div class="content-block">
+      <div class="row">
+        <h2>Sign Up Today!</h2>
+        <form method="post" action="/adduser">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" />
+          <br />
+          <br />
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" name="firstname" />
+          <br />
+          <br />
+          <label for="lastname">Last Name</label>
+          <input type="lastname" id="lastname" name="lastname" />
+          <br />
+          <br />
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
+      <div class="row">
+        <h2>Why HipsterService?</h2>
+        <p>All your hipster friends are using it, and you know it. We actually don't know, but you should believe us anyway.</p>
+      </div>
+      <div class="row">
+        <h2>What Even Is HipsterService?</h2>
+        <p>Definitely not a moneymaking scam that we try and sell to millenials.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
